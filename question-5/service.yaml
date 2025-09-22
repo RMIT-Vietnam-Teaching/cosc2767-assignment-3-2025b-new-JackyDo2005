@@ -1,0 +1,10 @@
+db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: database
+    volumes:
+      - my-app-db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
