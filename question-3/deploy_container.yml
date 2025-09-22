@@ -1,0 +1,18 @@
+---
+- name: Deploy Tomcat container from Docker Hub
+  hosts: local
+  become: yes
+  tasks:
+    - name: Pull Docker image
+      community.docker.docker_image:
+        name: my-tomcat-app:final-version-2025b
+        source: pull
+
+    - name: Ensure container is running
+      community.docker.docker_container:
+        name: mytomcat2025
+        image: my-tomcat-app:final-version-2025b
+        state: started
+        restart_policy: always
+        ports:
+          - "8083:8080"   
